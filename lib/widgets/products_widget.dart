@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:online_ecommerce_ui/screens/product_screen.dart';
 
 class ProductWidgets extends StatelessWidget {
   List itemTitle = [
@@ -37,9 +39,51 @@ class ProductWidgets extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     InkWell(
-                      onTap: () {},
-                      child: Container(alignment: Alignment.center, child: Image.asset("assets/${itemsImages[index]}"),),
-                    )
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => ProductScreen(),
+                          ),
+                        );
+                      },
+                      child: Container(
+                        alignment: Alignment.center,
+                        child: Image.asset(
+                          "assets/${itemsImages[index]}",
+                          // height: itemWidth * 0.75,
+                          height: itemWidth * 0.5,
+                        ),
+                      ),
+                    ),
+                    Text(
+                      itemTitle[index],
+                      style: TextStyle(
+                        fontSize: 18,
+                      ),
+                    ),
+                    SizedBox(height: 12),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "\$10",
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Color(0xFF146ABE),
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Icon(
+                            CupertinoIcons.add,
+                            color: Color(0xFF146ABE),
+                            size: 26,
+                          ),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
